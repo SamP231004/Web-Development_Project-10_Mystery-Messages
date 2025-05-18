@@ -23,10 +23,10 @@ export const authOption: NextAuthOptions = {
                         ],
                     });
                     if (!user) {
-                        throw new Error('No user found with this email');
+                        throw new Error('👻 No user haunts this email address!');
                     }
                     if (!user.isVerified) {
-                        throw new Error('Please verify your account before logging in');
+                        throw new Error('🔒 Please verify your account before logging in.');
                     }
                     const isPasswordCorrect = await bcrypt.compare(
                         credentials.password,
@@ -36,7 +36,7 @@ export const authOption: NextAuthOptions = {
                         return user;
                     }
                     else {
-                        throw new Error('Incorrect Password');
+                        throw new Error('🔒 Wrong password, please try again');
                     }
                 }
                 catch(err : any) {

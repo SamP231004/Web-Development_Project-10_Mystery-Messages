@@ -17,7 +17,7 @@ export async function POST(request: Request) {
             return Response.json (
                 {
                     success: false,
-                    message: 'Username is already taken',
+                    message: '🙅‍♂️ Sorry, that username is taken',
                 },
                 { status : 400 }
             );
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
                 return Response.json (
                     {
                         success: false,
-                        message: 'User already exists with this email',
+                        message: '😌 Looks like this email is already registered. Try logging in!',
                     },
                     { status : 400 }
                 )
@@ -80,7 +80,7 @@ export async function POST(request: Request) {
         return Response.json(
             {
                 success: true,
-                message: "User registered successfully. Please verify the account.",
+                message: "✨ Welcome aboard! Please verify your account to get started.",
             },
             { status : 201}
         );
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
         return Response.json(
             {
                 success: false,
-                message: 'Error registering user',
+                message: '⚠️ Error registering user',
             },
             { status: 500 }
         );
