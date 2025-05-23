@@ -20,7 +20,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
     const handleDeleteConfirm = async () => {
         try {
             const response = await axios.delete<ApiResponse>(
-                `/api/delete-message/${message._id}`
+                `/api/delete-messages/${message._id}`
             );
             toast.success(response.data.message);
             if (typeof message._id === 'string') {
@@ -53,7 +53,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
                             <AlertDialogHeader>
                                 <AlertDialogTitle>😬 Double-check — are you sure?</AlertDialogTitle>
                                 <AlertDialogDescription>
-                                    😬 Be careful! This will permanently delete the message.
+                                    Be careful! This will permanently delete the message.
                                 </AlertDialogDescription>
                             </AlertDialogHeader>
                             <AlertDialogFooter>

@@ -1,6 +1,7 @@
 import UserModel from "@/model/user.models";
 import dbConnect from "@/lib/dbConnect";
-import { Message } from "@/model/user.models";
+import mongoose from "mongoose";
+// import { Message } from "@/model/user.models";
 
 export async function POST(request: Request) {
     await dbConnect();
@@ -28,8 +29,9 @@ export async function POST(request: Request) {
         }
 
         // Push the new message to the user's messages array
-        const newMessage = { content, createdAt: new Date() };
-        user.messages.push(newMessage as Message);
+        console.log("content to add:", content);
+        const newMessage = (user.messages as any).create({ content, createdAt: new Date() });
+        user.messages.push(newMessage);
         await user.save();
         return Response.json(
             { 
