@@ -11,14 +11,14 @@ const genAI = new GoogleGenerativeAI(apiKey);
 
 export const runtime = 'edge';
 
-export async function POST(req: Request) {
+export async function POST() {
   try {
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     const prompt = `Create a list of **exactly three (3)** open-ended and engaging questions. Each question **MUST be separated by '||' (double pipe)**. These questions are for an anonymous social messaging platform, like Qooh.me, and should be suitable for a diverse audience. Avoid personal or sensitive topics, focusing instead on universal themes that encourage friendly interaction. **The entire output MUST strictly adhere to this format: 'Question 1||Question 2||Question 3' (with no extra text, numbering, or preamble).** For example: 'What’s a hobby you’ve recently started?||If you could have dinner with any historical figure, who would it be?||What’s a simple thing that makes you happy?'. Ensure the questions are intriguing, foster curiosity, and contribute to a positive and welcoming conversational environment.`;
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    let text = response.text();
+    const text = response.text();
     console.log('Raw Generated Text (from Gemini):', text);
 
     const specialChar = '||';

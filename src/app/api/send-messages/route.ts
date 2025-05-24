@@ -1,7 +1,5 @@
 import UserModel from "@/model/user.models";
-import dbConnect from "@/lib/dbConnect";
-import mongoose from "mongoose";
-// import { Message } from "@/model/user.models";
+import dbConnect from "@/lib/dbConnect";;
 
 export async function POST(request: Request) {
     await dbConnect();
