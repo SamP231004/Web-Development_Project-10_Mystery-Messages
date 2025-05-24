@@ -18,6 +18,10 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Kumar+One&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet"></link>
+      </head>
       <body className={inter.className}>
         <AuthProvider>
           {children}

@@ -1,67 +1,51 @@
 'use client';
 
+import '@/app/CSS/laptop.css'
 import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Mail } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Autoplay from 'embla-carousel-autoplay';
-import messages from '@/messages.json';
-
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from '@/components/ui/carousel';
+import logo from '@/app/Images_Used/logo.png'
+import image1 from '@/app/Images_Used/Image_1.png'
+import portfolio from '@/app/Images_Used/portfolio.png'
+import linkedin from '@/app/Images_Used/linkedin.png'
+import github from '@/app/Images_Used/github.png';
+import rightArrow from '@/app/Images_Used/right_arrow.png'
 
 export default function Home() {
     return (
         <>
-            {/* Main content */}
-            <main className="flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 bg-gray-800 text-white">
-                <section className="text-center mb-8 md:mb-12">
-                    <h1 className="text-3xl md:text-5xl font-bold">
-                        Dive into the World of Anonymous Feedback
-                    </h1>
-                    <p className="mt-3 md:mt-4 text-base md:text-lg">
-                        True Feedback - Where your identity remains a secret.
-                    </p>
-                </section>
-
-                {/* Carousel for Messages */}
-                <Carousel
-                    plugins={[Autoplay({ delay: 3000 })]}
-                    className="w-full max-w-lg md:max-w-xl"
-                >
-                    <CarouselContent>
-                        {messages.map((message, index) => (
-                            <CarouselItem key={index} className="p-4">
-                                <Card>
-                                    <CardHeader>
-                                        <CardTitle>{message.title}</CardTitle>
-                                    </CardHeader>
-                                    <CardContent className="flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-4">
-                                        <Mail className="flex-shrink-0" />
-                                        <div>
-                                            <p>{message.content}</p>
-                                            <p className="text-xs text-muted-foreground">
-                                                {message.received}
-                                            </p>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                </Carousel>
-            </main>
-
-            {/* Footer */}
-            <footer className="text-center p-4 md:p-6 bg-gray-900 text-white">
-                © 2025 True Feedback. All rights reserved.
-            </footer>
+            <div className="header">
+                <div className="logo">
+                    <Image src={logo} alt=''></Image>
+                </div>
+                <div className="tabs">
+                    <a href="/dashboard">Dashboard</a>
+                </div>
+            </div>
+            <div className="container">
+                <div className="title">
+                    <p>Mystery</p>
+                    <p>Messages</p>
+                </div>
+                <div className="maskedImage">
+                    <Image src={image1} alt=""></Image>
+                </div>
+                <div className="bottomPart">
+                    <div className="tagline">
+                        Unmask the Message, Not the Messenger.
+                        <Image src={rightArrow} alt=''></Image>
+                    </div>
+                    <div className="startExperience">
+                        <a href="/dashboard">
+                            Start Experience
+                        </a>
+                        <Image src={rightArrow} alt=''></Image>
+                    </div>
+                    <div className='contact'>
+                        <a href="https://samp231004.github.io/Portfolio/" target='_blank'><Image src={portfolio} alt="" /></a>
+                        <a href="https://www.linkedin.com/in/samp2310/" target='_blank'><Image src={linkedin} alt="" /></a>
+                        <a href="https://github.com/SamP231004" target='_blank'><Image src={github} alt="" /></a>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }

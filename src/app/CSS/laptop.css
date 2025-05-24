@@ -1,0 +1,185 @@
+/* ************************************************************************************* */
+
+body {
+    background-color: #000000;
+    color: white;
+    overflow: hidden;
+}
+
+/* ************************************************************************************* */
+
+.header {
+    /* background-color: purple; */
+    height: 15vh;
+    margin: 0 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Kode Mono", monospace;
+}
+.header img {
+    height: 15vh;
+    width: 15vh;
+}
+.tabs a {
+  position: relative;
+  display: inline-block;
+  font-size: x-large;
+  text-decoration: none;
+  color: #fff;
+  padding: 8px 16px;
+  transition: all 0.3s ease;
+  opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 5s forwards;
+}
+.tabs a:hover {
+  /* color: #000000; */
+  text-shadow: 0 0 3px whitesmoke
+}
+.tabs a::after {
+  content: "---->";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  color: white;
+}
+.tabs a:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(20px);
+}
+
+/* ************************************************************************************* */
+
+.container {
+    height: 85vh;
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* ************************************************************************************* */
+
+.title {
+    /* background-color: red; */
+    height: 55vh;
+    width: 65vw;
+    margin: 10vh 0 0 5vw;
+    font-size: 12vw;
+    font-family: "Kumar One", serif;
+    letter-spacing: -10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 1s forwards;
+}
+.title p {
+    padding: 0;
+    margin: 0;
+}
+.title p:nth-child(2) {
+    position: relative;
+    top: -10vh;
+}
+
+/* ************************************************************************************* */
+
+.maskedImage img{
+    position: fixed;
+    height: 115vh;
+    top: 5vh;
+    left: 16vw;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 2s forwards;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ************************************************************************************* */
+
+.bottomPart {
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+    font-family: "Kode Mono", monospace;
+}
+
+.tagline {
+    /* background-color: purple; */
+    width: 20vw;
+    font-size: x-large;
+    font-weight: 500;
+    position: relative;
+    left: -10vw;
+    top: -3vh;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 3s forwards;
+}
+.tagline img {
+    width: 7vw;
+    position: absolute;
+    left: 14vw;
+    filter: invert(1);
+    top: 5vh;
+}
+
+.startExperience {
+    background-color: white;
+    color: black;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    height: fit-content;
+    border-radius: 15px;
+    position: relative;
+    left: -3vw;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 4s forwards;
+}
+.startExperience:hover {
+    box-shadow: 0px 0 10px 0px white;
+}
+.startExperience a {
+    /* background-color: purple; */
+    width: 50%;
+    font-weight: 600;
+    /* margin: 5px; */
+}
+.startExperience img {
+    width: 4vw;
+    position: relative;
+}
+
+.contact {
+    /* background-color: purple; */
+    display: flex;
+    height: fit-content;
+    padding: 5px;
+    position: relative;
+    top: 4vh;
+    left: 18vw;
+}
+.contact a img {
+    height: 25px;
+    width: 25px;
+    filter: invert(1);
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+.contact a img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 3px #fff);
+}
+
+/* ************************************************************************************* */
