@@ -26,7 +26,7 @@ export default function Home() {
                     <p>Messages</p>
                 </div>
                 <div className="maskedImage">
-                    <Image src={image1} alt=""></Image>
+                    <Image src={image1} alt=''></Image>
                 </div>
                 <div className="bottomPart">
                     <div className="tagline">
@@ -40,9 +40,9 @@ export default function Home() {
                         <Image src={rightArrow} alt=''></Image>
                     </div>
                     <div className='contact'>
-                        <a href="https://samp231004.github.io/Portfolio/" target='_blank'><Image src={portfolio} alt="" /></a>
-                        <a href="https://www.linkedin.com/in/samp2310/" target='_blank'><Image src={linkedin} alt="" /></a>
-                        <a href="https://github.com/SamP231004" target='_blank'><Image src={github} alt="" /></a>
+                        <a href="https://samp231004.github.io/Portfolio/" target='_blank'><Image src={portfolio} alt='' /></a>
+                        <a href="https://www.linkedin.com/in/samp2310/" target='_blank'><Image src={linkedin} alt='' /></a>
+                        <a href="https://github.com/SamP231004" target='_blank'><Image src={github} alt='' /></a>
                     </div>
                 </div>
             </div>

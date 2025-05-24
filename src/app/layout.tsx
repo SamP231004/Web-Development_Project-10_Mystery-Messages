@@ -7,8 +7,8 @@ import { Toaster } from 'sonner';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'True Feedback',
-  description: 'Real feedback from real people.',
+  title: 'Mystery Messages',
+  description: 'Unmask the Message, Not the Messenger.',
 };
 
 interface RootLayoutProps {
