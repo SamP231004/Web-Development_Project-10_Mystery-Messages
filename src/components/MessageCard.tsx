@@ -11,6 +11,8 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Button } from './ui/button';
 import { ApiResponse } from '@/types/ApiResponse';
 
+import '@/app/CSS/laptop.css'
+
 type MessageCardProps = {
     message: Message;
     onMessageDelete: (messageId: string) => void;
@@ -39,17 +41,17 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
     };
 
     return (
-        <Card className="card-bordered">
+        <Card className="CardContainer">
             <CardHeader>
                 <div className="flex justify-between items-center">
                     <CardTitle>{message.content}</CardTitle>
                     <AlertDialog>
-                        <AlertDialogTrigger asChild>
+                        <AlertDialogTrigger asChild className='deleteButton'>
                             <Button variant="destructive">
-                                <X className="w-5 h-5" />
+                                <X className="w-3 h-3" />
                             </Button>
                         </AlertDialogTrigger>
-                        <AlertDialogContent>
+                        <AlertDialogContent className='AlertDialogBox'>
                             <AlertDialogHeader>
                                 <AlertDialogTitle>😬 Double-check — are you sure?</AlertDialogTitle>
                                 <AlertDialogDescription>
@@ -57,8 +59,8 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
                                 </AlertDialogDescription>
                             </AlertDialogHeader>
                             <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction onClick={handleDeleteConfirm}>
+                                <AlertDialogCancel className='CancelButton'>Cancel</AlertDialogCancel>
+                                <AlertDialogAction className='ContinueButton' onClick={handleDeleteConfirm}>
                                     Continue
                                 </AlertDialogAction>
                             </AlertDialogFooter>

@@ -267,3 +267,259 @@ body {
 
 /* ************************************************************************************* */
 
+nav {
+    /* background-color: red; */
+    height: fit-content;
+}
+.NavContainer {
+    /* background-color: purple; */
+    padding: 5px;
+    margin: 0 1vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.NavContainer a {
+    /* background-color: yellow; */
+    width: 18%;
+    display: flex;
+    font-family: "Kumar One", serif;
+    font-size: x-large;
+    align-items: center;
+    gap: 5px;
+}
+.NavContainer a img{
+    width: 100px;
+    height: 75px;
+}
+.NavContainer span {
+    font-family: "Kode Mono", monospace;
+    font-size: xx-large;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 0.5s forwards;
+}
+.NavContainer button {
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 10px;
+    /* width: fit-content; */
+    /* margin: auto; */
+}
+.NavContainer button:hover {
+    box-shadow: 0 0 10px 3px white;
+    border-radius: 20px;
+    color: white;
+}
+
+/* ************************************************************************************* */
+
+.DashboardContainer {
+    /* background-color: purple; */
+    margin: auto 2vw;
+    padding: 15px;
+    max-height: 75vh;
+    overflow-y: scroll;
+}
+.DashboardContainer::-webkit-scrollbar {
+    width: 0;
+}
+.DashboardContainer h1 {
+    text-align: center;
+    font-family: "Kumar One", serif;
+    font-size: xx-large;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 1s forwards;
+}
+.CopyLink {
+    /* background-color: red; */
+    font-family: "Kode Mono", monospace;
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.LinkContainer {
+    display: flex;
+    align-items: center;
+}
+.LinkContainer input {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 1.5s forwards;
+}
+.LinkContainer button {
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+.LinkContainer button:hover {
+    box-shadow: 0 0 10px 3px white;
+    border-radius: 20px;
+    color: white;
+}
+.AcceptingMessagesContainer {
+    /* background-color: yellow; */
+    width: fit-content;
+    padding: 15px 0 0 0;
+    display: flex;
+    align-items: center;
+    font-family: "Kode Mono", monospace;
+    font-size: large;
+    margin-bottom: 2px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 2s forwards;
+}
+.ReloadButton button {
+    background-color: white;
+    color: black;
+    margin-top: 12px;
+    position: relative;
+    left: 95%;
+    /* width: 100%; */
+}
+.ReloadButton button:hover {
+    box-shadow: 0 0 5px 1px white;
+    border-radius: 20px;
+}
+.CardContainer {
+    background-color: black;
+    /* border: 1px solid white; */
+    color: white;
+    font-family: "Kode Mono", monospace;
+    font-size: large;
+    box-shadow: 3px 3px 5px 0.1px white ;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 3s forwards;
+}
+.deleteButton {
+    background-color: white;
+    color: black;
+}
+.deleteButton:hover {
+    box-shadow: 0 0 5px 1px white;
+    border-radius: 20px;
+}
+
+/* ************************************************************************************* */
+
+.AlertDialogBox {
+    color: black;
+    border: 3px solid black;
+}
+.CancelButton {
+    border: 2px solid black;
+    background-color: white;
+}
+.CancelButton:hover {
+    box-shadow: 0 0 5px 1px black;
+    border-radius: 20px;
+}
+.ContinueButton {
+    background-color: black;
+    color: white;
+}
+.ContinueButton:hover {
+    box-shadow: 0 0 5px 1px black;
+    border-radius: 20px;
+}
+
+/* ************************************************************************************* */
+
+.PublicContainer {
+    /* background-color: purple; */
+    height: 100vh;
+    margin: auto;
+    padding: 5vh;
+}
+.PublicContainer h1 {
+    text-align: center;
+    font-family: "Kumar One", serif;
+    font-size: xx-large;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 1s forwards;
+}
+.PublicContainer .formLabel {
+    font-family: "Kode Mono", monospace;
+    font-size: 2.5vh;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 1.5s forwards;
+}
+.PublicContainer .sendItButton {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+}
+.PublicContainer .sendItButton:hover {
+    box-shadow: 0 0 5px 1px black;
+    border-radius: 20px;
+}
+.suggestMessages {
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
+    font-family: "Kumar One", serif;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 2s forwards;
+}
+.suggestMessages:hover {
+    box-shadow: 0 0 5px 1px white;
+    border-radius: 20px;
+}
+.clickToSelect {
+    font-family: "Kode Mono", monospace;
+    font-size: medium;
+}
+.SuggestMessagesContainer {
+    font-family: "Kode Mono", monospace;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 2.5s forwards;
+}
+.SuggestMessagesContainer h3{
+    font-size: x-large;
+}
+.SuggestMessagesContainer p {
+    font-size: large;
+}
+.geminiSuggestedMessages {
+    border: 1px solid black;
+    color: black;
+    /* width: 90%; */
+}
+.OnBoardContainer {
+    /* background-color: red; */
+    font-family: "Kode Mono", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+.OnBoardContainer div {
+    font-size: larger;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 3s forwards;
+}
+.OnBoardContainer button {
+    background-color: white;
+    color: black;
+    font-family: "Kumar One", serif;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 3.5s forwards;
+}
+.OnBoardContainer button:hover {
+    box-shadow: 0 0 5px 1px white;
+    border-radius: 20px;
+}
+
+/* ************************************************************************************* */

@@ -17,6 +17,8 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { messageSchema } from '@/schemas/messageSchema';
 
+import '@/app/CSS/laptop.css'
+
 export default function SendMessage() {
     const params = useParams<{ username: string }>();
     const username = params.username;
@@ -71,10 +73,8 @@ export default function SendMessage() {
     };
 
     return (
-        <div className="container mx-auto my-8 p-6 bg-white rounded max-w-4xl">
-            <h1 className="text-4xl font-bold mb-6 text-center">
-                Public Profile Link
-            </h1>
+        <div className="PublicContainer">
+            <h1>Public Profile Link</h1>
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -83,7 +83,7 @@ export default function SendMessage() {
                         name="content"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Send Anonymous Message to @{username}</FormLabel>
+                                <FormLabel className='formLabel'>Send Anonymous Message to @{username}</FormLabel>
                                 <FormControl>
                                     <Textarea
                                         placeholder="Write your anonymous message here"
@@ -103,7 +103,7 @@ export default function SendMessage() {
                                 Please wait
                             </Button>
                         ) : (
-                            <Button type="submit" disabled={isLoading || !messageContent}>
+                            <Button type="submit" className='sendItButton' disabled={isLoading || !messageContent}>
                                 Send It
                             </Button>
                         )}
@@ -115,7 +115,7 @@ export default function SendMessage() {
                 <div className="space-y-2">
                     <Button
                         onClick={fetchSuggestedMessages}
-                        className="my-4"
+                        className="suggestMessages"
                         disabled={isSuggestLoading}
                     >
                         {isSuggestLoading ? (
@@ -124,13 +124,13 @@ export default function SendMessage() {
                                 Loading...
                             </>
                         ) : (
-                            'Suggest Messages'
+                            'Suggest Messages (Ask Gemini)'
                         )}
                     </Button>
-                    <p>Click on any message below to select it.</p>
+                    <p className='clickToSelect'>Click on any message below to select it.</p>
                 </div>
 
-                <Card>
+                <Card className='SuggestMessagesContainer'>
                     <CardHeader>
                         <h3 className="text-xl font-semibold">Messages</h3>
                     </CardHeader>
@@ -140,7 +140,7 @@ export default function SendMessage() {
                                 <Button
                                     key={index}
                                     variant="outline"
-                                    className="mb-2"
+                                    className="geminiSuggestedMessages"
                                     onClick={() => handleMessageClick(message)}
                                 >
                                     {message}
@@ -155,8 +155,8 @@ export default function SendMessage() {
 
             <Separator className="my-6" />
 
-            <div className="text-center">
-                <div className="mb-4">Get Your Message Board</div>
+            <div className="OnBoardContainer">
+                <div>Get Your Message Board</div>
                 <Link href="/sign-up">
                     <Button>Create Your Account</Button>
                 </Link>
