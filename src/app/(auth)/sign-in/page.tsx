@@ -12,6 +12,8 @@ import { useRouter } from 'next/navigation';
 import { signInSchema } from '@/schemas/signInSchema';
 import { toast } from 'sonner';
 
+import '@/app/CSS/laptop.css'
+
 export default function SignInForm() {
   const router = useRouter();
 
@@ -48,13 +50,13 @@ export default function SignInForm() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-800">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-        <div className="text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
+    <div className="SignInContainer">
+      <div className="SignInBox">
+        <div className="SignInUpperPart">
+          <h1>
             Welcome Back to Mystery Messages
           </h1>
-          <p className="mb-4">🤫 Sign in to keep your conversations secret</p>
+          <p>🤫 Sign in to keep your conversations secret</p>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -63,7 +65,7 @@ export default function SignInForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email/Username</FormLabel>
+                  <FormLabel className='formLabel'>Email/Username</FormLabel>
                   <Input {...field} />
                   <FormMessage />
                 </FormItem>
@@ -74,21 +76,21 @@ export default function SignInForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel className='formLabel'>Password</FormLabel>
                   <Input type="password" {...field} />
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button className="w-full" type="submit">
+            <Button type="submit">
               Sign In
             </Button>
           </form>
         </Form>
-        <div className="text-center mt-4">
+        <div className='SignInLowerPart'>
           <p>
             Not a member yet?{' '}
-            <Link href="/sign-up" className="text-blue-600 hover:text-blue-800">
+            <Link href="/sign-up" className='SignInLowerPartLink'>
               Sign up
             </Link>
           </p>

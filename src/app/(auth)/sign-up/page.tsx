@@ -17,6 +17,8 @@ import { useRouter } from 'next/navigation';
 import { signUpSchema } from '@/schemas/signUpSchema';
 import { toast } from 'sonner';
 
+import '@/app/CSS/laptop.css'
+
 export default function SignUpForm() {
   const [username, setUsername] = useState('');
   const [usernameMessage, setUsernameMessage] = useState('');
@@ -90,13 +92,11 @@ export default function SignUpForm() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-800">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-        <div className="text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
-            Join Mystery Messages
-          </h1>
-          <p className="mb-4">🕵️‍♂️ Start your secret adventure — sign up now!</p>
+    <div className="SignInContainer">
+      <div className="SignInBox">
+        <div className="SignInUpperPart">
+          <h1>Join Mystery Messages</h1>
+          <p>🕵️‍♂️ Start your secret adventure — sign up now!</p>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -105,7 +105,7 @@ export default function SignUpForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel className='formLabel'>Username</FormLabel>
                   <Input
                     {...field}
                     onChange={(e) => {
@@ -134,9 +134,9 @@ export default function SignUpForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel className='formLabel'>Email</FormLabel>
                   <Input {...field} />
-                  <p className="text-muted text-gray-400 text-sm">
+                  <p className="text-gray-400 text-sm">
                     We will send you a verification code
                   </p>
                   <FormMessage />
@@ -149,7 +149,7 @@ export default function SignUpForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel className='formLabel'>Password</FormLabel>
                   <Input type="password" {...field} />
                   <FormMessage />
                 </FormItem>
@@ -168,10 +168,10 @@ export default function SignUpForm() {
             </Button>
           </form>
         </Form>
-        <div className="text-center mt-4">
+        <div className="SignInLowerPart">
           <p>
             Already a member?{' '}
-            <Link href="/sign-in" className="text-blue-600 hover:text-blue-800">
+            <Link href="/sign-in" className="SignInLowerPartLink">
               Sign in
             </Link>
           </p>

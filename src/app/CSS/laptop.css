@@ -54,8 +54,8 @@ body {
 /* ************************************************************************************* */
 
 .container {
-    height: 85vh;
     /* background-color: yellow; */
+    height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -90,7 +90,7 @@ body {
     position: fixed;
     height: 115vh;
     top: 5vh;
-    left: 16vw;
+    left: 18vw;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s ease-in-out 2s forwards;
@@ -118,8 +118,8 @@ body {
     font-size: x-large;
     font-weight: 500;
     position: relative;
-    left: -10vw;
-    top: -3vh;
+    left: -12vw;
+    top: -4vh;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s ease-in-out 3s forwards;
@@ -141,7 +141,7 @@ body {
     height: fit-content;
     border-radius: 15px;
     position: relative;
-    left: -3vw;
+    left: -7vw;
     align-items: center;
     opacity: 0;
     transform: translateY(20px);
@@ -168,7 +168,7 @@ body {
     padding: 5px;
     position: relative;
     top: 4vh;
-    left: 18vw;
+    left: 13vw;
 }
 .contact a img {
     height: 25px;
@@ -183,3 +183,87 @@ body {
 }
 
 /* ************************************************************************************* */
+
+.SignInContainer {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.SignInBox {
+    /* background-color: red; */
+    height: fit-content;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 25px;
+}
+.SignInUpperPart {
+    /* background-color: purple; */
+    width: 75%;
+}
+.SignInUpperPart h1 {
+    text-align: center;
+    font-family: "Kumar One", serif;
+    font-size: xx-large;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 1s forwards;
+}
+.SignInUpperPart p {
+    text-align: center;
+    font-family: "Kode Mono", monospace;
+    font-size: large;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 1.5s forwards;
+}
+.SignInBox Form {
+    /* background-color: purple; */
+    font-family: "Kode Mono", monospace;
+    margin: 3vh auto;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    box-shadow: 4px 4px 10px 0px white;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 2s forwards;
+}
+.SignInBox .formLabel {
+    font-size: 2.5vh;
+}
+.SignInBox Form button {
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 10px;
+    width: fit-content;
+    margin: auto;
+}
+.SignInBox Form button:hover {
+    box-shadow: 0 0 10px 3px white;
+    border-radius: 20px;
+    padding: 0px 5px;
+}
+.SignInLowerPart {
+    /* background-color: purple; */
+    font-family: "Kode Mono", monospace;
+    font-size: large;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-in-out 3s forwards;
+}
+.SignInLowerPart .SignInLowerPartLink {
+    font-family: "Kumar One", serif;
+}
+.SignInLowerPart .SignInLowerPartLink:hover {
+    text-decoration: underline;
+}
+
+/* ************************************************************************************* */
+

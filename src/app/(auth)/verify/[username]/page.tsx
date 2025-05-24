@@ -1,13 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { Form, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { ApiResponse } from '@/types/ApiResponse';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -18,6 +12,8 @@ import * as z from 'zod';
 import { verifySchema } from '@/schemas/verifySchema';
 import { useState } from 'react';
 import { toast } from 'sonner';
+
+import '@/app/CSS/laptop.css'
 
 export default function VerifyAccount() {
   const router = useRouter();
@@ -55,13 +51,11 @@ export default function VerifyAccount() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-        <div className="text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
-            Verify Your Account
-          </h1>
-          <p className="mb-4">Enter the verification code sent to your email</p>
+    <div className="SignInContainer">
+      <div className="SignInBox">
+        <div className="SignInUpperPart">
+          <h1>Verify Your Account</h1>
+          <p>Enter the verification code sent to your email</p>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -70,7 +64,7 @@ export default function VerifyAccount() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Verification Code</FormLabel>
+                  <FormLabel className='formLabel'>Verification Code</FormLabel>
                   <Input
                     {...field}
                     placeholder="Enter 6-digit code"
@@ -80,7 +74,7 @@ export default function VerifyAccount() {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={isSubmitting} className="w-full">
+            <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Verifying...' : 'Verify'}
             </Button>
           </form>
