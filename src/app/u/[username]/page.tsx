@@ -147,7 +147,7 @@ export default function SendMessage() {
                                 </Button>
                             ))
                         ) : (
-                            <p className="text-muted-foreground">No suggestions yet. Click "Suggest Messages" to get started.</p>
+                            <p className="text-muted-foreground">No suggestions yet. Click &quot;Suggest Messages&quot; to get started.</p>
                         )}
                     </CardContent>
                 </Card>
