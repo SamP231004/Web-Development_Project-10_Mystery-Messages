@@ -10,6 +10,7 @@
 
 * **🔒 Secure User Authentication**: **NextAuth.js** and **bcryptjs** are used to keep your account safe.
 * **✅ Verified Email**: Get peace of mind with email verification powered by **Resend** and **react-email**.
+    * *Note*: Due to `Resend.com`'s current limitations for personal use, the verification code is delivered to my personal email address. This means the verification process itself cannot be fully demonstrated live.
 * **🤖 Gemini AI Integration**: Stumped for words? Integrated **Gemini AI** helps you generate mysterious and engaging message ideas.
 * **✍️ Send & Receive Anonymous Messages**: Connect with others without revealing your identity.
 * **📬 Personalized Message Inbox**: Easily view all the anonymous messages sent to your profile.
@@ -61,6 +62,10 @@ Here's a comprehensive look at the Mystery Messages interface on larger screens,
 **Public Profile & Anonymous Sending:** This page allows others to send you anonymous messages, with **Gemini AI** offering clever suggestions to help them craft their note.
 
 [![Public Profile & Anonymous Sending - Desktop](ScreenShots/SS_4.png)](ScreenShots/SS_4.png)
+
+**Email Verification Code:** A glimpse at the verification code delivery, essential for securing user accounts.
+
+[![Email Verification Code - Desktop](ScreenShots/SS_8.png)](ScreenShots/SS_8.png)
 
 ---
 
