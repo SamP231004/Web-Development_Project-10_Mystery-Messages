@@ -3,7 +3,7 @@
 body {
     background-color: #000000;
     color: white;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 /* ************************************************************************************* */
@@ -529,19 +529,24 @@ nav {
     .title {
         /* background-color: purple; */
         width: 90%;
-        font-size: 9.5vh;
+        font-size: 9vh;
         letter-spacing: -4px;
+        margin: 10vh 0 0 0;
     }
     .title p:nth-child(2) {
         top: 0;
     }
+    .tabs a {
+        z-index: 1;
+    }
     .maskedImage img {
         left: 22vw;
+        overflow: hidden;
     }
     .tagline {
         /* background-color: red; */
-        width: 100%;
-        font-size: 16px;
+        width: 90%;
+        font-size: 20px;
         left: 3vw;
         top: -30vh;
     }
@@ -550,7 +555,7 @@ nav {
     }
     .startExperience {
         top: -15vh;
-        left: 12vw;
+        left: -3vw;
         font-size: 16px;
         padding: 7px;
         justify-content: unset;
@@ -558,12 +563,13 @@ nav {
     .startExperience img {
         width: 13vw;
         position: relative;
-        top: 4vh;
+        top: 3vh;
     }
     .contact {
+        position: fixed;
+        left: 1vw;
+        top: 90vh;
         padding: 0;
-        top: 5vh;
-        left: -78vw;
         gap: 10px;
     }
     .SignInBox {
