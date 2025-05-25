@@ -42,7 +42,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
 
     return (
         <Card className="CardContainer">
-            <CardHeader>
+            <CardHeader className='CardContainerContent'>
                 <div className="flex justify-between items-center">
                     <CardTitle>{message.content}</CardTitle>
                     <AlertDialog>

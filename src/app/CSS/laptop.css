@@ -3,7 +3,7 @@
 body {
     background-color: #000000;
     color: white;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 /* ************************************************************************************* */
@@ -523,3 +523,137 @@ nav {
 }
 
 /* ************************************************************************************* */
+/* ************************************************************************************* */
+
+@media (min-width: 300px) and (max-width: 800px) {
+    .title {
+        /* background-color: purple; */
+        width: 90%;
+        font-size: 9.5vh;
+        letter-spacing: -4px;
+    }
+    .title p:nth-child(2) {
+        top: 0;
+    }
+    .maskedImage img {
+        left: 22vw;
+    }
+    .tagline {
+        /* background-color: red; */
+        width: 100%;
+        font-size: 16px;
+        left: 3vw;
+        top: -30vh;
+    }
+    .tagline img {
+        display: none;
+    }
+    .startExperience {
+        top: -15vh;
+        left: 12vw;
+        font-size: 16px;
+        padding: 7px;
+        justify-content: unset;
+    }
+    .startExperience img {
+        width: 13vw;
+        position: relative;
+        top: 4vh;
+    }
+    .contact {
+        padding: 0;
+        top: 5vh;
+        left: -78vw;
+        gap: 10px;
+    }
+    .SignInBox {
+        margin: 0 3vw;
+    }
+    .SignInUpperPart h1 {
+        font-size: x-large;
+    }
+    .SignInUpperPart p {
+        font-size: medium;
+    }
+    .NavContainer span {
+        /* background-color: red; */
+        position: absolute;
+        top: 12vh;
+        width: 95%;
+        margin: auto;
+        font-size: x-large;
+        text-align: center;
+    }
+    .DashboardContainer h1 {
+        font-size: x-large;
+    }
+    .CopyLink {
+        font-size: medium;
+    }
+    .LinkContainer input {
+        font-size: small;
+    }
+    .AcceptingMessagesContainer {
+        font-size: medium;
+    }
+    .ReloadButton button {
+        left: 0;
+    }
+    .CardContainer {
+        padding: 15px 0px 0 0;
+        font-size: small;
+    }
+    .deleteButton {
+        width: 25px;
+        height: 25px;
+        position: relative;
+    }
+    .CardContainerContent {
+        padding: 5px 10px;
+    }
+    .PublicContainer {
+        padding: 2vh;
+    }
+    .PublicContainer h1 {
+        font-size: x-large;
+    }
+    .PublicContainer .formLabel {
+        margin-top: 3vh;
+        font-size: 2.5vh;
+    }
+    .PublicContainer textarea, .suggestMessages, .clickToSelect  {
+        font-size: small;
+    }
+    .PublicContainer div:nth-child(3) {
+        /* background-color: purple; */
+        margin: 10px 0 0px 0;
+    }
+    .PublicContainer div:nth-child(4) {
+        margin-bottom: 5px;
+    }
+    .SuggestMessagesContainer {
+        padding: 2vh 0;
+    }
+    .SuggestMessagesContainer h3 {
+        font-size: large;
+    }
+    .SuggestMessagesContainer p {
+        font-size: small;
+    }
+    .geminiSuggestedMessages {
+        font-size: x-small;
+        text-wrap: auto;
+        height: auto;
+        margin: 2px;
+    }
+    .OnBoardContainer {
+        flex-direction: column;
+    }
+    .OnBoardContainer div {
+        text-align: center;
+        font-size: large;
+    }
+    .OnBoardContainer button {
+        font-size: small;
+    }
+}
