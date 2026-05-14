@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/mystery-messages
+
+app:
+  frontend-origin: http://localhost:3000
+  jwt:
+    secret: replace-with-a-long-random-secret
+    expiration-ms: 604800000
+  resend:
+    api-key: re_xxx
+    from: Mystery Messages <onboarding@resend.dev>
+  gemini:
+    api-key: AIza_xxx
+    model: gemini-1.5-flash
