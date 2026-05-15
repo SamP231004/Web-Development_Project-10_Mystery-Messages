@@ -1,5 +1,7 @@
 package com.mysterymessages.api.service;
 
+import java.util.Objects;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,8 @@ public class CurrentUserService {
         if (authentication == null || !authentication.isAuthenticated()) {
             throw new ApiException(HttpStatus.UNAUTHORIZED, "Authentication required to proceed");
         }
-        return userRepository.findById(authentication.getName())
+        String userId = Objects.requireNonNull(authentication.getName());
+        return userRepository.findById(userId)
                 .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "Unable to find user"));
     }
 }

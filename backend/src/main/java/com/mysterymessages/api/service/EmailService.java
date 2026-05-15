@@ -1,6 +1,7 @@
 package com.mysterymessages.api.service;
 
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -37,14 +38,16 @@ public class EmailService {
                 """.formatted(username, verifyCode);
 
         try {
+            Object requestBody = Map.of(
+                    "from", from,
+                    "to", new String[] { to },
+                    "subject", "Mystery Messages Verification Code",
+                    "html", html);
+
             webClient.post()
                     .uri("/emails")
                     .header("Authorization", "Bearer " + apiKey)
-                    .bodyValue(Map.of(
-                            "from", from,
-                            "to", new String[] { to },
-                            "subject", "Mystery Messages Verification Code",
-                            "html", html))
+                    .bodyValue(Objects.requireNonNull(requestBody))
                     .retrieve()
                     .toBodilessEntity()
                     .block();

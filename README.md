@@ -1,6 +1,6 @@
 # 🕵️ Mystery Messages: Anonymous AI-Powered Messaging
 
-**Mystery Messages** is your go-to platform for sending anonymous messages with a truly unique twist. Harnessing the power of **Gemini AI**, it helps you craft clever and thoughtful messages that spark intrigue. Built with a cutting-edge tech stack, this platform prioritizes performance and delivers an eye-catching user experience.
+**Mystery Messages** is a full-stack anonymous messaging platform where users can send and receive messages without revealing their identity. Integrated with **Gemini AI**, the application helps users generate creative and thoughtful message suggestions. This version features a modern **Next.js frontend** powered by a robust **Java Spring Boot backend**, combining an engaging user experience with a scalable and production-ready architecture.
 
 🌐 **Live Site**: [https://samp231004-mystery-messages.onrender.com](https://samp231004-mystery-messages.onrender.com)
 
@@ -8,32 +8,62 @@
 
 ## ✨ Features
 
-* **🔒 Secure User Authentication**: **NextAuth.js** and **bcryptjs** are used to keep your account safe.
-* **✅ Verified Email**: Get peace of mind with email verification powered by **Resend** and **react-email**.
-    * *Note*: Due to `Resend.com`'s current limitations for personal use, the verification code is delivered to my personal email address. This means the verification process itself cannot be fully demonstrated live.
-* **🤖 Gemini AI Integration**: Stumped for words? Integrated **Gemini AI** helps you generate mysterious and engaging message ideas.
-* **✍️ Send & Receive Anonymous Messages**: Connect with others without revealing your identity.
-* **📬 Personalized Message Inbox**: Easily view all the anonymous messages sent to your profile.
-* **🔍 Speedy Search**: Find messages fast with a **debounced search input** (thanks to `usehooks-ts`).
-* **📦 Optimized Data Querying**: Powered by a robust **MongoDB Aggregation Pipeline** for lightning-fast data retrieval.
-* **⚙️ Type-Safe & Validated**: Developed with **TypeScript** and **ZOD** for robust schema validation.
-* **💬 Instant Notifications**: Stay updated with **toast notifications** featuring engaging emojis for all interactions! 🚀
-* **🌈 Responsive & Modern UI**: Enjoy a seamless experience on any device, crafted with **Shadcn/UI** and custom animations for a truly eye-popping design.
+* **🔒 Secure User Authentication**: Built with **Spring Security**, **JWT**, and **BCrypt** to ensure secure user registration and login.
+* **✅ Verified Email**: Email verification is handled through the **Resend API**, integrated directly into the Spring Boot backend.
+    * *Note*: Due to `Resend.com`'s limitations for personal accounts, verification emails are currently delivered to my personal inbox, so the full verification flow may not be demonstrable on the live site.
+* **🤖 Gemini AI Integration**: The backend connects to **Gemini API** to generate mysterious and engaging message suggestions for users.
+* **✍️ Send & Receive Anonymous Messages**: Users can share messages anonymously without exposing their identity.
+* **📬 Personalized Message Inbox**: Each user has a private dashboard to view all received messages.
+* **🔍 Speedy Search**: Includes a **debounced search input** using `usehooks-ts` for efficient filtering.
+* **📦 Optimized Data Retrieval**: Uses **MongoDB Aggregation Pipelines** for high-performance querying and message retrieval.
+* **⚙️ Type-Safe & Validated**: Frontend validation is powered by **TypeScript** and **Zod**, while backend validation is handled using Spring's validation framework.
+* **💬 Instant Notifications**: Interactive **toast notifications** provide immediate feedback for all user actions. 🚀
+* **🌈 Responsive & Modern UI**: Designed with **Tailwind CSS** and **shadcn/ui** to deliver a polished experience across all devices.
+* **🔄 Seamless API Routing**: The frontend continues using `/api/*` endpoints, which are transparently rewritten in `next.config.ts` to the Spring Boot backend.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Category           | Tools/Libraries                                           |
-| :----------------- | :-------------------------------------------------------- |
-| **Frontend** | Next.js, TypeScript, Tailwind CSS, Shadcn/UI, React       |
-| **Backend** | Next.js API routes, MongoDB (Mongoose + Aggregation Pipeline) |
-| **Authentication** | NextAuth.js, bcryptjs                                     |
-| **Email** | Resend, react-email                                       |
-| **Validation** | ZOD                                                       |
-| **AI Integration** | Gemini AI, OpenAI API                                     |
-| **Utilities** | usehooks-ts (debounce), react-hot-toast                   |
-| **Hosting** | Render                                                    |
+| Category | Tools/Libraries |
+| :------- | :-------------- |
+| **Frontend** | Next.js 15, React 19, TypeScript, Tailwind CSS, shadcn/ui |
+| **Backend** | Java 21, Spring Boot 3, Maven |
+| **Database** | MongoDB |
+| **Authentication** | Spring Security, JWT, BCrypt |
+| **Email** | Resend API |
+| **Validation** | Zod, Spring Validation |
+| **AI Integration** | Gemini API |
+| **Utilities** | usehooks-ts, react-hot-toast |
+| **Hosting** | Render |
+
+---
+
+## 🏗️ Architecture Overview
+
+The application follows a decoupled architecture where the **Next.js frontend** handles the user interface, while the **Spring Boot backend** manages authentication, business logic, email delivery, and AI integrations.
+
+The frontend still calls familiar endpoints such as `/api/sign-up` and `/api/get-messages`. In this branch, these requests are automatically rewritten via `next.config.ts` to the Spring Boot backend, allowing the frontend to remain unchanged while benefiting from a more scalable backend architecture.
+
+---
+
+## 📁 Project Structure
+
+```text
+.
+├── backend/                 # Spring Boot REST API
+│   ├── pom.xml
+│   └── src/main/java/com/mysterymessages/api
+├── src/                     # Next.js frontend
+│   ├── app
+│   ├── components
+│   ├── context
+│   ├── schemas
+│   └── types
+└── package.json
+````
+
+> The original Next.js API routes, Mongoose models, NextAuth configuration, and React Email templates have been removed from this branch, as these responsibilities are now fully handled by the Spring Boot backend.
 
 ---
 
@@ -51,19 +81,19 @@ Here's a comprehensive look at the Mystery Messages interface on larger screens,
 
 [![Aesthetic Landing Page - Desktop](ScreenShots/SS_1.png)](ScreenShots/SS_1.png)
 
-**Secure Sign-In:** A clear and intuitive interface for users to securely log into their accounts.
+**Secure Sign-In:** A clean and intuitive interface for users to securely access their accounts.
 
 [![Secure Sign-In - Desktop](ScreenShots/SS_2.png)](ScreenShots/SS_2.png)
 
-**User Dashboard:** Your personalized hub, displaying all messages received and options to compose new ones.
+**User Dashboard:** A personalized hub displaying all received anonymous messages and management options.
 
 [![User Dashboard - Desktop](ScreenShots/SS_3.png)](ScreenShots/SS_3.png)
 
-**Public Profile & Anonymous Sending:** This page allows others to send you anonymous messages, with **Gemini AI** offering clever suggestions to help them craft their note.
+**Public Profile & Anonymous Sending:** Others can send you anonymous messages, with **Gemini AI** generating creative suggestions to inspire them.
 
 [![Public Profile & Anonymous Sending - Desktop](ScreenShots/SS_4.png)](ScreenShots/SS_4.png)
 
-**Email Verification Code:** A glimpse at the verification code delivery, essential for securing user accounts.
+**Email Verification Code:** A glimpse of the verification email used to confirm new accounts.
 
 [![Email Verification Code - Desktop](ScreenShots/SS_8.png)](ScreenShots/SS_8.png)
 
@@ -71,7 +101,7 @@ Here's a comprehensive look at the Mystery Messages interface on larger screens,
 
 ### 📱 MOBILE VIEW: Perfectly Responsive
 
-The design shines on smaller screens too! Key features are optimized for a smooth and engaging mobile experience.
+The design is fully optimized for mobile devices, ensuring a smooth and engaging experience on smaller screens.
 
 <p align="center">
   <img src="ScreenShots/SS_5.png" alt="Responsive Landing Page - Mobile" width="250" style="padding: 5px;">

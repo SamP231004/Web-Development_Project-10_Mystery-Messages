@@ -16,7 +16,7 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(ApiException.class)
     public ResponseEntity<ApiResponse> handleApiException(ApiException exception) {
-        return ResponseEntity.status(exception.getStatus()).body(ApiResponse.failure(exception.getMessage()));
+        return ResponseEntity.status(exception.getStatus().value()).body(ApiResponse.failure(exception.getMessage()));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

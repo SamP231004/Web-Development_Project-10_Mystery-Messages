@@ -2,17 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useSession, signOut } from 'next-auth/react';
 import { Button } from './ui/button';
-import { User } from 'next-auth';
+import { useAuth } from '@/context/AuthProvider';
 
 import '@/app/CSS/laptop.css'
 import Image from 'next/image';
 import logo from '@/app/Images_Used/logo.png'
 
 function Navbar() {
-    const { data: session } = useSession();
-    const user: User = session?.user;
+    const { user, signOut } = useAuth();
 
     return (
         <nav>
@@ -23,12 +21,12 @@ function Navbar() {
                     </div>
                     Mystery Messages
                 </a>
-                {session ? (
+                {user ? (
                     <>
                         <span>
                             Hey there, {user.username || user.email} 😊
                         </span>
-                        <Button onClick={() => signOut()} variant='outline'>
+                        <Button onClick={signOut} variant='outline'>
                             Logout
                         </Button>
                     </>

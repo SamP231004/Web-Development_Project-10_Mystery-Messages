@@ -2,6 +2,7 @@ package com.mysterymessages.api.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -37,13 +38,15 @@ public class SuggestionService {
                 + "Separate each question with || and return no extra text.";
 
         try {
+            Object requestBody = Map.of("contents", List.of(Map.of("parts", List.of(Map.of("text", prompt)))));
+
             @SuppressWarnings("unchecked")
             Map<String, Object> response = webClient.post()
                     .uri(uriBuilder -> uriBuilder
                             .path("/v1beta/models/{model}:generateContent")
                             .queryParam("key", apiKey)
                             .build(model))
-                    .bodyValue(Map.of("contents", List.of(Map.of("parts", List.of(Map.of("text", prompt))))))
+                    .bodyValue(Objects.requireNonNull(requestBody))
                     .retrieve()
                     .bodyToMono(Map.class)
                     .block();

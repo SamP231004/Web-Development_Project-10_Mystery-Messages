@@ -5,16 +5,15 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Switch } from '@/components/ui/switch';
 import { toast } from 'sonner';
-import { Message } from '@/model/user.models';
+import { Message } from '@/types/message';
 import { ApiResponse } from '@/types/ApiResponse';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios, { AxiosError } from 'axios';
 import { Loader2, RefreshCcw } from 'lucide-react';
-import { User } from 'next-auth';
-import { useSession } from 'next-auth/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AcceptMessageSchema } from '@/schemas/acceptMessageSchema';
+import { useAuth } from '@/context/AuthProvider';
 
 import '@/app/CSS/laptop.css'
 
@@ -27,7 +26,7 @@ function UserDashboard() {
         setMessages(messages.filter((message) => message._id !== messageId));
     };
 
-    const { data: session } = useSession();
+    const { user, isLoading: isAuthLoading } = useAuth();
 
     const form = useForm({
         resolver: zodResolver(AcceptMessageSchema),
@@ -81,12 +80,12 @@ function UserDashboard() {
 
     // Fetch initial state from the server
     useEffect(() => {
-        if (!session || !session.user) return;
+        if (!user) return;
 
         fetchMessages();
 
         fetchAcceptMessages();
-    }, [session, fetchAcceptMessages, fetchMessages]);
+    }, [user, fetchAcceptMessages, fetchMessages]);
 
     // Handle switch change
     const handleSwitchChange = async () => {
@@ -105,11 +104,11 @@ function UserDashboard() {
         }
     };
 
-    if (!session || !session.user) {
+    if (isAuthLoading || !user) {
         return <div></div>;
     }
 
-    const { username } = session.user as User;
+    const { username } = user;
     const baseUrl = `${window.location.protocol}//${window.location.host}`;
     const profileUrl = `${baseUrl}/u/${username}`;
 

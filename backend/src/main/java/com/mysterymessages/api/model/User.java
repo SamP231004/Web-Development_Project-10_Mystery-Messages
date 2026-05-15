@@ -15,6 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
 
     @Id
+    @JsonProperty("_id")
     private String id;
 
     @Indexed(unique = true)
@@ -35,16 +36,13 @@ public class User {
     private boolean isAcceptingMessages = true;
     private List<Message> messages = new ArrayList<>();
 
+    @JsonProperty("_id")
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String get_id() {
-        return id;
     }
 
     public String getUsername() {

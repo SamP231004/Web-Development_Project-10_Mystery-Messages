@@ -1,0 +1,2 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.mysterymessages.api.config.DotenvQuoteSanitizerEnvironmentPostProcessor

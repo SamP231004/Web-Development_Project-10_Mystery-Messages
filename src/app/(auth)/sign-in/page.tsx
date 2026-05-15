@@ -3,49 +3,47 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-import { signIn } from 'next-auth/react';
-import { Form, FormField, FormItem, FormLabel, FormMessage, } from '@/components/ui/form';
+import { Form, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { signInSchema } from '@/schemas/signInSchema';
 import { toast } from 'sonner';
+import axios, { AxiosError } from 'axios';
+import { ApiResponse } from '@/types/ApiResponse';
+import { useAuth } from '@/context/AuthProvider';
 
-import '@/app/CSS/laptop.css'
+import '@/app/CSS/laptop.css';
 
 export default function SignInForm() {
   const router = useRouter();
+  const { signIn } = useAuth();
 
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
       identifier: 'ONE2310',
-      password: 'password', 
+      password: 'password',
     },
   });
 
   const onSubmit = async (data: z.infer<typeof signInSchema>) => {
-    const result = await signIn('credentials', {
-      redirect: false,
-      identifier: data.identifier,
-      password: data.password,
-    });
-
-    if (result?.error) {
-      if (result.error === 'CredentialsSignin') {
-        toast.error('😕 Oops! Incorrect username or password');
-      } else {
-        toast.error(result.error);
+    try {
+      const response = await axios.post<ApiResponse>('/api/auth/sign-in', data);
+      if (!response.data.token || !response.data.user) {
+        toast.error('Sign in failed. Please try again.');
+        return;
       }
-      return;
-    }
 
-    if (result?.url) {
-      toast.success('🎉 Successfully signed in! Redirecting...');
+      signIn(response.data.token, response.data.user);
+      toast.success('Successfully signed in! Redirecting...');
       setTimeout(() => {
         router.replace('/dashboard');
-      }, 3000);
+      }, 1000);
+    } catch (error) {
+      const axiosError = error as AxiosError<ApiResponse>;
+      toast.error(axiosError.response?.data.message ?? 'Oops! Incorrect username or password');
     }
   };
 
@@ -56,7 +54,7 @@ export default function SignInForm() {
           <h1>
             Welcome Back to Mystery Messages
           </h1>
-          <p>🤫 Sign in to keep your conversations secret</p>
+          <p>Sign in to keep your conversations secret</p>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
