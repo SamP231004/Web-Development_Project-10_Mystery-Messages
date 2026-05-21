@@ -4,6 +4,9 @@ body {
     background-color: #000000;
     color: white;
     overflow: hidden;
+    font-family: "Kode Mono", monospace;
+    font-size: medium;
+    /* letter-spacing: 4px; */
 }
 
 /* ************************************************************************************* */

@@ -49,7 +49,8 @@ public class UserService {
         User user = userRepository.findByEmail(request.email()).orElseGet(User::new);
 
         if (user.getId() != null && user.isVerified()) {
-            throw new ApiException(HttpStatus.BAD_REQUEST, "Looks like this email is already registered. Try logging in!");
+            throw new ApiException(HttpStatus.BAD_REQUEST,
+                    "Looks like this email is already registered. Try logging in!");
         }
 
         user.setUsername(request.username());
@@ -60,22 +61,30 @@ public class UserService {
         user.setVerified(false);
         user.setAcceptingMessages(true);
 
+        // Send validation email first before capturing transient states into MongoDB
+        boolean emailSent = emailService.sendVerificationEmail(request.email(), request.username(), verifyCode);
+        if (!emailSent) {
+            throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Failed to send verification email. Please try again.");
+        }
+
         try {
             userRepository.save(user);
         } catch (DuplicateKeyException ex) {
             throw new ApiException(HttpStatus.BAD_REQUEST, "Email or username is already registered");
         }
 
-        boolean emailSent = emailService.sendVerificationEmail(request.email(), request.username(), verifyCode);
-        if (!emailSent) {
-            throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to send verification email");
-        }
-
         return ApiResponse.success("Welcome aboard! Please verify your account to get started.");
     }
 
-    public ApiResponse checkUsername(String username) {
-        if (username == null || username.length() < 2 || username.length() > 20 || !username.matches("^[a-zA-Z0-9_]+$")) {
+    public ApiResponse checkUsername(String encodedUsername) {
+        if (encodedUsername == null) {
+            throw new ApiException(HttpStatus.BAD_REQUEST, "Invalid query parameters provided.");
+        }
+
+        String username = URLDecoder.decode(encodedUsername, StandardCharsets.UTF_8);
+
+        if (username.length() < 2 || username.length() > 20 || !username.matches("^[a-zA-Z0-9_]+$")) {
             throw new ApiException(HttpStatus.BAD_REQUEST, "Invalid query parameters provided.");
         }
 
@@ -91,7 +100,8 @@ public class UserService {
                 .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "User not found"));
 
         boolean isCodeValid = request.code().equals(user.getVerifyCode());
-        boolean isCodeNotExpired = user.getVerifyCodeExpiry() != null && user.getVerifyCodeExpiry().isAfter(Instant.now());
+        boolean isCodeNotExpired = user.getVerifyCodeExpiry() != null
+                && user.getVerifyCodeExpiry().isAfter(Instant.now());
 
         if (isCodeValid && isCodeNotExpired) {
             user.setVerified(true);
@@ -99,7 +109,8 @@ public class UserService {
             return ApiResponse.success("Account verified successfully!");
         }
         if (!isCodeNotExpired) {
-            throw new ApiException(HttpStatus.BAD_REQUEST, "Verification code has expired. Please sign up again to get a new one.");
+            throw new ApiException(HttpStatus.BAD_REQUEST,
+                    "Verification code has expired. Please sign up again to get a new one.");
         }
         throw new ApiException(HttpStatus.BAD_REQUEST, "Wrong verification code, please try again");
     }

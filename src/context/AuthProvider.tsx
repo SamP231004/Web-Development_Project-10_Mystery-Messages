@@ -53,6 +53,35 @@ export default function AuthProvider({
     }, [token]);
 
     useEffect(() => {
+        const protectedApiPaths = [
+            '/api/accept-messages',
+            '/api/get-messages',
+            '/api/delete-messages',
+        ];
+
+        const interceptor = axios.interceptors.response.use(
+            (response) => response,
+            (error) => {
+                const status = error.response?.status;
+                const url = error.config?.url ?? '';
+                const isProtectedDashboardApi = protectedApiPaths.some((path) => url.startsWith(path));
+
+                if ((status === 401 || status === 403) && isProtectedDashboardApi) {
+                    window.localStorage.removeItem(TOKEN_KEY);
+                    window.localStorage.removeItem(USER_KEY);
+                    setToken(null);
+                    setUser(null);
+                    router.replace('/sign-in');
+                }
+
+                return Promise.reject(error);
+            }
+        );
+
+        return () => axios.interceptors.response.eject(interceptor);
+    }, [router]);
+
+    useEffect(() => {
         if (isLoading) return;
 
         const authPage = pathname === '/sign-in' || pathname === '/sign-up' || pathname.startsWith('/verify');

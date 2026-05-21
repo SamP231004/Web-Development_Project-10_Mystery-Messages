@@ -104,6 +104,9 @@ public class User {
     }
 
     public List<Message> getMessages() {
+        if (messages == null) {
+            messages = new ArrayList<>();
+        }
         return messages;
     }
 
