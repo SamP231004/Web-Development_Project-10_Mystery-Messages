@@ -15,11 +15,11 @@ Required for normal app behavior:
 
 - `MONGODB_URI`
 - `JWT_SECRET` or `NEXTAUTH_SECRET`
+- `FRONTEND_ORIGIN`, set this to your deployed frontend origin. You may use a comma-separated list, for example `http://localhost:3000,https://your-app.vercel.app,https://*.vercel.app`.
 
 Optional integrations:
 
 - `MONGODB_DATABASE`, defaults to `test` to match the original Mongoose URI behavior when no database is present in the URI.
-- `FRONTEND_ORIGIN`, defaults to `http://localhost:3000`
 - `RESEND_API_KEY`
 - `RESEND_FROM`
 - `GEMINI_API_KEY`
@@ -35,7 +35,7 @@ Optional integrations:
 - `POST /api/suggest-messages`
 - `GET /api/get-messages`
 - `GET /api/accept-messages`
-- `POST /api/accept-messages`
+- `PUT /api/accept-messages`
 - `DELETE /api/delete-messages/{messageId}`
 
 Protected routes use a Bearer token returned from `POST /api/auth/sign-in`.
